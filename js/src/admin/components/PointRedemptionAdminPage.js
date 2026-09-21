@@ -26,7 +26,11 @@ export default class PointRedemptionAdminPage extends ExtensionPage {
               <h3>{app.translator.trans('lowseekai-point-redempt.admin.batches_title')}</h3>
               <p className="helpText">{app.translator.trans('lowseekai-point-redempt.admin.batches_help')}</p>
             </div>
-            <Button className="Button Button--primary" icon="fas fa-plus" onclick={() => app.modal.show(CreateBatchModal, { onCreated: () => this.loadBatches() })}>
+            <Button
+              className="Button Button--primary"
+              icon="fas fa-plus"
+              onclick={() => app.modal.show(CreateBatchModal, { onCreated: () => this.loadBatches() })}
+            >
               {app.translator.trans('lowseekai-point-redempt.admin.create_button')}
             </Button>
           </div>
@@ -70,12 +74,18 @@ export default class PointRedemptionAdminPage extends ExtensionPage {
                     {batch.note && <div className="helpText">{batch.note}</div>}
                   </td>
                   <td>{batch.pointsAmount}</td>
-                  <td>{batch.redeemedCount} / {batch.quantity}</td>
+                  <td>
+                    {batch.redeemedCount} / {batch.quantity}
+                  </td>
                   <td>
                     <div>{this.formatDate(batch.startsAt)}</div>
                     <div>{this.formatDate(batch.expiresAt)}</div>
                   </td>
-                  <td><span className={`PointRedemptionAdmin-status PointRedemptionAdmin-status--${batch.status}`}>{this.statusLabel(batch.status)}</span></td>
+                  <td>
+                    <span className={`PointRedemptionAdmin-status PointRedemptionAdmin-status--${batch.status}`}>
+                      {this.statusLabel(batch.status)}
+                    </span>
+                  </td>
                   <td>
                     <Button
                       className={batch.isEnabled ? 'Button Button--danger' : 'Button Button--primary'}
@@ -124,7 +134,7 @@ export default class PointRedemptionAdminPage extends ExtensionPage {
                   <td>{redemption.batchName || '-'}</td>
                   <td>{redemption.username || redemption.userId || '-'}</td>
                   <td>+{redemption.pointsAmount}</td>
-                  <td>••••{redemption.codeSuffix}</td>
+                  <td>****{redemption.codeSuffix}</td>
                   <td>{this.formatDate(redemption.redeemedAt)}</td>
                 </tr>
               );

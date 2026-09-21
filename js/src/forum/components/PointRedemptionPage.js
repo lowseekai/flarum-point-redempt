@@ -144,7 +144,11 @@ export default class PointRedemptionPage extends Page {
                 </Button>
               </div>
             </form>
-            {this.message && <div className={`PointRedemptionPage-message PointRedemptionPage-message--${this.messageType}`}>{this.message}</div>}
+            {this.message && (
+              <div className={`PointRedemptionPage-message PointRedemptionPage-message--${this.messageType}`}>
+                {this.message}
+              </div>
+            )}
           </section>
 
           <section className="PointRedemptionPage-section">
@@ -170,7 +174,7 @@ export default class PointRedemptionPage extends Page {
                         <tr key={redemption.id}>
                           <td>{attributes.batchName || '-'}</td>
                           <td>+{attributes.pointsAmount}</td>
-                          <td>••••{attributes.codeSuffix}</td>
+                          <td>****{attributes.codeSuffix}</td>
                           <td>{attributes.redeemedAt ? new Date(attributes.redeemedAt).toLocaleString() : '-'}</td>
                         </tr>
                       );
