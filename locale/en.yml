@@ -1,0 +1,63 @@
+lowseekai-point-redempt:
+  forum:
+    title: Point Redemption
+    subtitle: Enter a redemption code to add points to your account.
+    current_balance: Current points
+    redeem_heading: Redeem points
+    code_label: Redemption code
+    code_placeholder: e.g. LS-ABCD-EFGH-JKMN-PQRS
+    redeem_button: Redeem now
+    redeem_success: Redeemed successfully. You received {points} points.
+    history_heading: My redemption history
+    history_empty: No redemption records yet.
+    batch: Batch
+    points: Points
+    code_suffix: Code suffix
+    redeemed_at: Redeemed at
+    errors:
+      empty_code: Please enter a redemption code.
+      generic: Redemption failed. Please try again later.
+  admin:
+    create_title: Generate redemption codes
+    generated_title: Redemption codes generated
+    batches_title: Redemption code batches
+    batches_help: Generate one-time codes and download the complete list immediately.
+    records_title: Redemption records
+    create_button: Generate codes
+    generate: Generate
+    download_csv: Download CSV
+    close: Close
+    cancel: Cancel
+    disable: Disable
+    enable: Enable
+    generated_help: Generated {count} codes. The full codes will not be shown again after closing this window.
+    empty_batches: No redemption batches yet.
+    empty_records: No redemption records yet.
+    error: The operation failed. Please try again later.
+    fields:
+      name: Batch name
+      points_amount: Points per code
+      quantity: Quantity
+      starts_at: Start time
+      expires_at: Expiry time
+      note: Note
+    columns:
+      name: Name
+      points: Points
+      quantity: Quantity
+      validity: Validity
+      status: Status
+      actions: Actions
+      batch: Batch
+      user: User
+      code_suffix: Code suffix
+      redeemed_at: Redeemed at
+    status:
+      active: Active
+      pending: Pending
+      disabled: Disabled
+      expired: Expired
+      exhausted: Exhausted
+    permissions:
+      redeem: Redeem points
+      manage: Manage redemption batches

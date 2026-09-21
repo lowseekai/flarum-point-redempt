@@ -1,0 +1,96 @@
+.PointRedemptionPage {
+  padding: 24px 0 48px;
+
+  .PointRedemptionPage-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 24px;
+    margin-bottom: 24px;
+  }
+
+  h1,
+  h2 {
+    margin-top: 0;
+  }
+
+  .PointRedemptionPage-balance {
+    min-width: 150px;
+    padding: 14px 18px;
+    border: 1px solid var(--control-bg);
+    border-radius: 6px;
+    text-align: right;
+    background: var(--body-bg);
+
+    span,
+    strong {
+      display: block;
+    }
+
+    span {
+      color: var(--muted-color);
+      font-size: 13px;
+    }
+
+    strong {
+      margin-top: 4px;
+      color: var(--primary-color);
+      font-size: 24px;
+    }
+  }
+
+  .PointRedemptionPage-section {
+    margin-bottom: 28px;
+    padding: 22px;
+    border: 1px solid var(--control-bg);
+    border-radius: 6px;
+    background: var(--body-bg);
+  }
+
+  .PointRedemptionPage-form {
+    max-width: 620px;
+  }
+
+  .PointRedemptionPage-message {
+    margin-top: 16px;
+    padding: 12px 14px;
+    border-radius: 4px;
+  }
+
+  .PointRedemptionPage-message--success {
+    color: #176b45;
+    background: #e8f7ef;
+  }
+
+  .PointRedemptionPage-message--error {
+    color: #9b2c2c;
+    background: #fff0f0;
+  }
+
+  .PointRedemptionPage-tableWrap {
+    overflow-x: auto;
+  }
+
+  .PointRedemptionPage-table {
+    min-width: 640px;
+  }
+}
+
+@media (max-width: 600px) {
+  .PointRedemptionPage {
+    padding-top: 16px;
+
+    .PointRedemptionPage-header {
+      display: block;
+    }
+
+    .PointRedemptionPage-balance {
+      margin-top: 16px;
+      text-align: left;
+    }
+
+    .PointRedemptionPage-section {
+      padding: 16px;
+    }
+  }
+}

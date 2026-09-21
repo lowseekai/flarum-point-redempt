@@ -1,0 +1,63 @@
+lowseekai-point-redempt:
+  forum:
+    title: 积分兑换
+    subtitle: 输入兑换码，将奖励积分加入你的账户。
+    current_balance: 当前积分
+    redeem_heading: 兑换积分
+    code_label: 兑换码
+    code_placeholder: 例如 LS-ABCD-EFGH-JKMN-PQRS
+    redeem_button: 立即兑换
+    redeem_success: 兑换成功，获得 {points} 积分。
+    history_heading: 我的兑换记录
+    history_empty: 暂无兑换记录。
+    batch: 批次
+    points: 积分
+    code_suffix: 兑换码尾号
+    redeemed_at: 兑换时间
+    errors:
+      empty_code: 请输入兑换码。
+      generic: 兑换失败，请稍后重试。
+  admin:
+    create_title: 生成兑换码
+    generated_title: 兑换码已生成
+    batches_title: 兑换码批次
+    batches_help: 创建一次性兑换码，并在生成后立即下载完整兑换码列表。
+    records_title: 兑换记录
+    create_button: 生成兑换码
+    generate: 生成
+    download_csv: 下载 CSV
+    close: 关闭
+    cancel: 取消
+    disable: 停用
+    enable: 启用
+    generated_help: 本次生成 {count} 个兑换码。关闭窗口后不会再次显示完整兑换码。
+    empty_batches: 暂无兑换码批次。
+    empty_records: 暂无兑换记录。
+    error: 操作失败，请稍后重试。
+    fields:
+      name: 批次名称
+      points_amount: 每码积分
+      quantity: 生成数量
+      starts_at: 生效时间
+      expires_at: 失效时间
+      note: 备注
+    columns:
+      name: 名称
+      points: 积分
+      quantity: 数量
+      validity: 有效期
+      status: 状态
+      actions: 操作
+      batch: 批次
+      user: 用户
+      code_suffix: 兑换码尾号
+      redeemed_at: 兑换时间
+    status:
+      active: 生效中
+      pending: 未生效
+      disabled: 已停用
+      expired: 已过期
+      exhausted: 已用完
+    permissions:
+      redeem: 允许兑换积分
+      manage: 管理兑换码批次

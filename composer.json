@@ -1,0 +1,48 @@
+{
+    "name": "lowseekai/flarum-point-redempt",
+    "description": "积分兑换 - secure point redemption codes for Flarum 2.",
+    "type": "flarum-extension",
+    "license": "MIT",
+    "require": {
+        "flarum/core": "^2.0.0-rc.8",
+        "ramon/point-system": "^2.0 || dev-main"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^11"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "autoload": {
+        "psr-4": {
+            "Lowseekai\\PointRedempt\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Lowseekai\\PointRedempt\\Tests\\": "tests/"
+        }
+    },
+    "support": {
+        "source": "https://github.com/lowseekai/flarum-point-redempt",
+        "issues": "https://github.com/lowseekai/flarum-point-redempt/issues"
+    },
+    "extra": {
+        "flarum-extension": {
+            "id": "lowseekai-point-redempt",
+            "title": "积分兑换",
+            "category": "feature",
+            "icon": {
+                "name": "fas fa-gift",
+                "backgroundColor": "#2f6f5e",
+                "color": "#ffffff"
+            }
+        }
+    },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/lowseekai/point-system.git",
+            "no-api": true
+        }
+    ]
+}

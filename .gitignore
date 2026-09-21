@@ -1,0 +1,4 @@
+/vendor/
+/js/node_modules/
+/.phpunit.cache/
+/js/dist/*.map
