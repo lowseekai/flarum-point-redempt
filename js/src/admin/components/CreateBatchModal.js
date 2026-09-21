@@ -73,26 +73,34 @@ export default class CreateBatchModal extends Modal {
             (value) => (this.startsAt = value),
             true
           )}
-          <div className="Form-group">
+          <div className="Form-group PointRedemptionExpiryField">
             <label for="point-redemption-expiresAt">{app.translator.trans('lowseekai-point-redempt.admin.fields.expires_at')}</label>
             <input
               id="point-redemption-expiresAt"
-              className="FormControl"
+              className={`FormControl ${this.permanent ? 'is-disabled' : ''}`}
               type="datetime-local"
               value={this.expiresAt}
               required={!this.permanent}
               disabled={this.permanent}
               oninput={(event) => (this.expiresAt = event.target.value)}
             />
-            <label className="Checkbox">
-              <input
-                type="checkbox"
-                checked={this.permanent}
-                onchange={(event) => (this.permanent = event.target.checked)}
-              />
-              <div className="Checkbox-display" aria-hidden="true" />
-              {app.translator.trans('lowseekai-point-redempt.admin.fields.permanent')}
-            </label>
+            <div className={`PointRedemptionPermanentOption ${this.permanent ? 'is-selected' : ''}`}>
+              <label className="PointRedemptionPermanentOption-control">
+                <input
+                  className="PointRedemptionPermanentOption-input"
+                  type="checkbox"
+                  checked={this.permanent}
+                  onchange={(event) => (this.permanent = event.target.checked)}
+                />
+                <span className="PointRedemptionPermanentOption-box" aria-hidden="true">
+                  <i className="icon fas fa-check" />
+                </span>
+                <span className="PointRedemptionPermanentOption-title">
+                  <i className="icon fas fa-infinity" aria-hidden="true" />
+                  {app.translator.trans('lowseekai-point-redempt.admin.fields.permanent')}
+                </span>
+              </label>
+            </div>
           </div>
           <div className="Form-group">
             <label for="point-redemption-note">{app.translator.trans('lowseekai-point-redempt.admin.fields.note')}</label>
