@@ -7,6 +7,7 @@ lowseekai-point-redempt:
     code_label: 兑换码
     code_placeholder: 例如 LS-ABCD-EFGH-JKMN-PQRS
     redeem_button: 立即兑换
+    get_code_button: 获取兑换码
     redeem_success: 兑换成功，获得 {points} 积分。
     history_heading: 我的兑换记录
     history_empty: 暂无兑换记录。
@@ -40,7 +41,16 @@ lowseekai-point-redempt:
       quantity: 生成数量
       starts_at: 生效时间
       expires_at: 失效时间
+      permanent: 永久有效
       note: 备注
+    permanent: 永久有效
+    settings:
+      display_name: 积分兑换名称
+      display_name_help: 修改前台左侧导航和积分兑换页面显示的名称。
+      points_icon: 积分图标
+      points_icon_help: 填写 Font Awesome 图标类名，例如 fas fa-coins。
+      get_code_url: 获取兑换码链接
+      get_code_url_help: 填写发卡网地址；留空时前台不显示“获取兑换码”按钮。
     columns:
       name: 名称
       points: 积分

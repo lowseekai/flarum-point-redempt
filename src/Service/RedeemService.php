@@ -57,7 +57,7 @@ class RedeemService
             if ($now->lt($batch->starts_at)) {
                 throw new ValidationException(['code' => '兑换码尚未生效。']);
             }
-            if ($now->gte($batch->expires_at)) {
+            if ($batch->expires_at && $now->gte($batch->expires_at)) {
                 throw new ValidationException(['code' => '兑换码已过期。']);
             }
 

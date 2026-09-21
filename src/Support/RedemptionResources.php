@@ -17,7 +17,7 @@ trait RedemptionResources
             ? 'disabled'
             : ($now->lt($batch->starts_at)
                 ? 'pending'
-                : ($now->gte($batch->expires_at)
+                : ($batch->expires_at && $now->gte($batch->expires_at)
                     ? 'expired'
                     : ((int) $batch->redeemed_count >= (int) $batch->quantity ? 'exhausted' : 'active')));
 

@@ -30,14 +30,15 @@ class BatchService
 
         $startsAtInput = trim((string) ($data['startsAt'] ?? ''));
         $expiresAtInput = trim((string) ($data['expiresAt'] ?? ''));
+        $permanent = (bool) ($data['permanent'] ?? false);
 
         try {
-            if ($startsAtInput === '' || $expiresAtInput === '') {
+            if ($startsAtInput === '' || (! $permanent && $expiresAtInput === '')) {
                 throw new \InvalidArgumentException('Missing batch dates');
             }
 
             $startsAt = Carbon::parse($startsAtInput);
-            $expiresAt = Carbon::parse($expiresAtInput);
+            $expiresAt = $permanent ? null : Carbon::parse($expiresAtInput);
         } catch (\Throwable) {
             throw new ValidationException(['time' => '请输入有效的生效和失效时间。']);
         }
@@ -51,7 +52,7 @@ class BatchService
         if ($quantity === false || $quantity < 1 || $quantity > 1000) {
             throw new ValidationException(['quantity' => '生成数量必须为 1 到 1000。']);
         }
-        if ($expiresAt->lte($startsAt)) {
+        if ($expiresAt && $expiresAt->lte($startsAt)) {
             throw new ValidationException(['expiresAt' => '失效时间必须晚于生效时间。']);
         }
         if (mb_strlen($note) > 500) {
@@ -65,7 +66,7 @@ class BatchService
                 'quantity' => $quantity,
                 'redeemed_count' => 0,
                 'starts_at' => $startsAt->utc(),
-                'expires_at' => $expiresAt->utc(),
+                'expires_at' => $expiresAt?->utc(),
                 'is_enabled' => true,
                 'note' => $note ?: null,
                 'created_by' => $actor->id,

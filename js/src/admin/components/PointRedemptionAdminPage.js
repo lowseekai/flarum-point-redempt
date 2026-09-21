@@ -7,6 +7,12 @@ import CreateBatchModal from './CreateBatchModal';
 export default class PointRedemptionAdminPage extends ExtensionPage {
   oninit(vnode) {
     super.oninit(vnode);
+    const displayName = String(app.data.settings?.['point-redempt.display_name'] || '').trim();
+
+    if (displayName && this.extension?.extra?.['flarum-extension']) {
+      this.extension.extra['flarum-extension'].title = displayName;
+    }
+
     this.batches = [];
     this.redemptions = [];
     this.loadingBatches = true;
@@ -17,13 +23,20 @@ export default class PointRedemptionAdminPage extends ExtensionPage {
     this.loadRedemptions();
   }
 
-  content() {
-    return (
+  content(vnode) {
+    const displayName = String(app.data.settings?.['point-redempt.display_name'] || '').trim();
+
+    return [
+      super.content(vnode),
       <div className="PointRedemptionAdmin">
         <div className="container">
           <div className="PointRedemptionAdmin-toolbar">
             <div>
-              <h3>{app.translator.trans('lowseekai-point-redempt.admin.batches_title')}</h3>
+              <h3>
+                {displayName || app.translator.trans('lowseekai-point-redempt.forum.title')}
+                {' · '}
+                {app.translator.trans('lowseekai-point-redempt.admin.batches_title')}
+              </h3>
               <p className="helpText">{app.translator.trans('lowseekai-point-redempt.admin.batches_help')}</p>
             </div>
             <Button
@@ -44,8 +57,8 @@ export default class PointRedemptionAdminPage extends ExtensionPage {
             {this.loadingRedemptions ? <LoadingIndicator /> : this.redemptionTable()}
           </div>
         </div>
-      </div>
-    );
+      </div>,
+    ];
   }
 
   batchTable() {
@@ -79,7 +92,7 @@ export default class PointRedemptionAdminPage extends ExtensionPage {
                   </td>
                   <td>
                     <div>{this.formatDate(batch.startsAt)}</div>
-                    <div>{this.formatDate(batch.expiresAt)}</div>
+                    <div>{batch.expiresAt ? this.formatDate(batch.expiresAt) : app.translator.trans('lowseekai-point-redempt.admin.permanent')}</div>
                   </td>
                   <td>
                     <span className={`PointRedemptionAdmin-status PointRedemptionAdmin-status--${batch.status}`}>

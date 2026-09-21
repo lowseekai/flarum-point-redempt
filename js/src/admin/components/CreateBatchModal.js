@@ -18,6 +18,7 @@ export default class CreateBatchModal extends Modal {
     this.quantity = 10;
     this.startsAt = localDateTime(0, 5);
     this.expiresAt = localDateTime(30);
+    this.permanent = false;
     this.note = '';
     this.codes = null;
     this.batch = null;
@@ -72,14 +73,27 @@ export default class CreateBatchModal extends Modal {
             (value) => (this.startsAt = value),
             true
           )}
-          {this.field(
-            'expiresAt',
-            'datetime-local',
-            'admin.fields.expires_at',
-            this.expiresAt,
-            (value) => (this.expiresAt = value),
-            true
-          )}
+          <div className="Form-group">
+            <label for="point-redemption-expiresAt">{app.translator.trans('lowseekai-point-redempt.admin.fields.expires_at')}</label>
+            <input
+              id="point-redemption-expiresAt"
+              className="FormControl"
+              type="datetime-local"
+              value={this.expiresAt}
+              required={!this.permanent}
+              disabled={this.permanent}
+              oninput={(event) => (this.expiresAt = event.target.value)}
+            />
+            <label className="Checkbox">
+              <input
+                type="checkbox"
+                checked={this.permanent}
+                onchange={(event) => (this.permanent = event.target.checked)}
+              />
+              <div className="Checkbox-display" aria-hidden="true" />
+              {app.translator.trans('lowseekai-point-redempt.admin.fields.permanent')}
+            </label>
+          </div>
           <div className="Form-group">
             <label for="point-redemption-note">{app.translator.trans('lowseekai-point-redempt.admin.fields.note')}</label>
             <textarea
@@ -141,7 +155,8 @@ export default class CreateBatchModal extends Modal {
               pointsAmount: this.pointsAmount,
               quantity: this.quantity,
               startsAt: new Date(this.startsAt).toISOString(),
-              expiresAt: new Date(this.expiresAt).toISOString(),
+              expiresAt: this.permanent ? null : new Date(this.expiresAt).toISOString(),
+              permanent: this.permanent,
               note: this.note,
             },
           },

@@ -15,7 +15,7 @@ return [
                 $table->unsignedInteger('quantity');
                 $table->unsignedInteger('redeemed_count')->default(0);
                 $table->dateTime('starts_at');
-                $table->dateTime('expires_at');
+                $table->dateTime('expires_at')->nullable();
                 $table->boolean('is_enabled')->default(true);
                 $table->string('note', 500)->nullable();
                 $table->unsignedInteger('created_by');

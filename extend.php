@@ -17,6 +17,13 @@ return [
         ->css(__DIR__.'/less/forum.less')
         ->route('/point-redemption', 'pointRedemption.index'),
     new Extend\Locales(__DIR__.'/locale'),
+    (new Extend\Settings())
+        ->default('point-redempt.display_name', '积分兑换')
+        ->default('point-redempt.points_icon', 'fas fa-coins')
+        ->default('point-redempt.get_code_url', '')
+        ->serializeToForum('pointRedemptionName', 'point-redempt.display_name', fn ($value) => trim((string) $value) ?: '积分兑换')
+        ->serializeToForum('pointRedemptionIcon', 'point-redempt.points_icon', fn ($value) => trim((string) $value) ?: 'fas fa-coins')
+        ->serializeToForum('pointRedemptionGetCodeUrl', 'point-redempt.get_code_url', fn ($value) => trim((string) $value)),
     (new Extend\Routes('api'))
         ->get('/point-redemption/batches', 'pointRedemption.batches.index', Controller\ListBatchesController::class)
         ->post('/point-redemption/batches', 'pointRedemption.batches.create', Controller\CreateBatchController::class)

@@ -7,6 +7,7 @@ lowseekai-point-redempt:
     code_label: Redemption code
     code_placeholder: e.g. LS-ABCD-EFGH-JKMN-PQRS
     redeem_button: Redeem now
+    get_code_button: Get a redemption code
     redeem_success: Redeemed successfully. You received {points} points.
     history_heading: My redemption history
     history_empty: No redemption records yet.
@@ -40,7 +41,16 @@ lowseekai-point-redempt:
       quantity: Quantity
       starts_at: Start time
       expires_at: Expiry time
+      permanent: Permanent
       note: Note
+    permanent: Permanent
+    settings:
+      display_name: Redemption name
+      display_name_help: Name shown in the forum navigation and redemption page.
+      points_icon: Points icon
+      points_icon_help: Font Awesome icon class, for example fas fa-coins.
+      get_code_url: Get-code URL
+      get_code_url_help: Sales page URL. Leave empty to hide the button.
     columns:
       name: Name
       points: Points

@@ -1,6 +1,7 @@
 import app from 'flarum/forum/app';
 import Page from 'flarum/common/components/Page';
 import Button from 'flarum/common/components/Button';
+import LinkButton from 'flarum/common/components/LinkButton';
 import LoadingIndicator from 'flarum/common/components/LoadingIndicator';
 
 export default class PointRedemptionPage extends Page {
@@ -98,17 +99,23 @@ export default class PointRedemptionPage extends Page {
   }
 
   view() {
+    const displayName = app.forum.attribute('pointRedemptionName') || app.translator.trans('lowseekai-point-redempt.forum.title');
+    const pointsIcon = app.forum.attribute('pointRedemptionIcon') || 'fas fa-coins';
+    const getCodeUrl = app.forum.attribute('pointRedemptionGetCodeUrl');
+
     return (
       <main className="PointRedemptionPage">
         <div className="container">
           <div className="PointRedemptionPage-header">
             <div>
-              <h1>{app.translator.trans('lowseekai-point-redempt.forum.title')}</h1>
+              <h1>{displayName}</h1>
               <p className="helpText">{app.translator.trans('lowseekai-point-redempt.forum.subtitle')}</p>
             </div>
             <div className="PointRedemptionPage-balance">
               <span>{app.translator.trans('lowseekai-point-redempt.forum.current_balance')}</span>
-              <strong>{this.balance}</strong>
+              <strong>
+                <i className={`icon ${pointsIcon}`} aria-hidden="true" /> {this.balance}
+              </strong>
             </div>
           </div>
 
@@ -142,6 +149,18 @@ export default class PointRedemptionPage extends Page {
                 >
                   {app.translator.trans('lowseekai-point-redempt.forum.redeem_button')}
                 </Button>
+                {getCodeUrl && (
+                  <LinkButton
+                    className="Button"
+                    icon="fas fa-shopping-cart"
+                    href={getCodeUrl}
+                    external={true}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {app.translator.trans('lowseekai-point-redempt.forum.get_code_button')}
+                  </LinkButton>
+                )}
               </div>
             </form>
             {this.message && (

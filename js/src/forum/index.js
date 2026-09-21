@@ -8,6 +8,12 @@ app.initializers.add('lowseekai/flarum-point-redempt', () => {
   app.routes.pointRedemption = { path: '/point-redemption', component: PointRedemptionPage };
   extend(IndexSidebar.prototype, 'navItems', function (items) {
     if (!app.session.user || !app.forum.attribute('canRedeemPoints')) return;
-    items.add('pointRedemption', <LinkButton href={app.route('pointRedemption')} icon="fas fa-gift">{app.translator.trans('lowseekai-point-redempt.forum.title')}</LinkButton>, 83);
+    items.add(
+      'pointRedemption',
+      <LinkButton href={app.route('pointRedemption')} icon="fas fa-gift">
+        {app.forum.attribute('pointRedemptionName') || app.translator.trans('lowseekai-point-redempt.forum.title')}
+      </LinkButton>,
+      83
+    );
   });
 });
