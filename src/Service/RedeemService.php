@@ -7,6 +7,7 @@ namespace Lowseekai\PointRedempt\Service;
 use Flarum\Foundation\ValidationException;
 use Flarum\User\User;
 use Illuminate\Database\ConnectionInterface;
+use Illuminate\Support\Carbon;
 use Lowseekai\PointRedempt\Model\Redemption;
 use Lowseekai\PointRedempt\Model\RedemptionBatch;
 use Lowseekai\PointRedempt\Model\RedemptionCode;
@@ -52,7 +53,7 @@ class RedeemService
                 throw new ValidationException(['code' => '兑换码当前不可用。']);
             }
 
-            $now = now();
+            $now = Carbon::now();
             if ($now->lt($batch->starts_at)) {
                 throw new ValidationException(['code' => '兑换码尚未生效。']);
             }

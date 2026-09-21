@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Lowseekai\PointRedempt\Support;
 
+use Illuminate\Support\Carbon;
 use Lowseekai\PointRedempt\Model\Redemption;
 use Lowseekai\PointRedempt\Model\RedemptionBatch;
 
@@ -11,7 +12,7 @@ trait RedemptionResources
 {
     protected function batchResource(RedemptionBatch $batch): array
     {
-        $now = now();
+        $now = Carbon::now();
         $status = ! $batch->is_enabled
             ? 'disabled'
             : ($now->lt($batch->starts_at)

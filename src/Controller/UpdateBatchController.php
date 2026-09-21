@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Lowseekai\PointRedempt\Controller;
 
 use Flarum\Foundation\ValidationException;
+use Illuminate\Support\Carbon;
 use Lowseekai\PointRedempt\Model\RedemptionBatch;
 use Lowseekai\PointRedempt\Support\JsonController;
 use Lowseekai\PointRedempt\Support\RedemptionResources;
@@ -24,7 +25,7 @@ class UpdateBatchController extends JsonController
         }
 
         $enabled = (bool) ($this->attributes($request)['isEnabled'] ?? false);
-        if ($enabled && (now()->gte($batch->expires_at) || (int) $batch->redeemed_count >= (int) $batch->quantity)) {
+        if ($enabled && (Carbon::now()->gte($batch->expires_at) || (int) $batch->redeemed_count >= (int) $batch->quantity)) {
             throw new ValidationException(['batch' => '已过期或已用完的批次不能启用。']);
         }
 
