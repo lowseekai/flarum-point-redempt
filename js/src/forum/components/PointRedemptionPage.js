@@ -107,7 +107,7 @@ export default class PointRedemptionPage extends Page {
     const getCodeUrl = app.forum.attribute('pointRedemptionGetCodeUrl');
 
     return (
-      <PageStructure className="PointRedemptionLayout" sidebar={this.sidebar.bind(this)}>
+      <PageStructure className="PointRedemptionLayout IndexPage" sidebar={this.sidebar.bind(this)}>
         <main className="PointRedemptionPage">
           <div className="PointRedemptionPage-header">
             <div>
