@@ -180,6 +180,7 @@ export default class PointRedemptionPage extends Page {
             ) : this.redemptions.length ? (
               <div className="PointRedemptionPage-tableWrap">
                 <table className="Table PointRedemptionPage-table">
+                  <caption className="sr-only">{app.translator.trans('lowseekai-point-redempt.forum.history_heading')}</caption>
                   <thead>
                     <tr>
                       <th>{app.translator.trans('lowseekai-point-redempt.forum.batch')}</th>
@@ -191,13 +192,19 @@ export default class PointRedemptionPage extends Page {
                   <tbody>
                     {this.redemptions.map((redemption) => {
                       const attributes = redemption.attributes || {};
+                      const batchLabel = app.translator.trans('lowseekai-point-redempt.forum.batch');
+                      const pointsLabel = app.translator.trans('lowseekai-point-redempt.forum.points');
+                      const suffixLabel = app.translator.trans('lowseekai-point-redempt.forum.code_suffix');
+                      const redeemedAtLabel = app.translator.trans('lowseekai-point-redempt.forum.redeemed_at');
 
                       return (
                         <tr key={redemption.id}>
-                          <td>{attributes.batchName || '-'}</td>
-                          <td>+{attributes.pointsAmount}</td>
-                          <td>****{attributes.codeSuffix}</td>
-                          <td>{attributes.redeemedAt ? new Date(attributes.redeemedAt).toLocaleString() : '-'}</td>
+                          <td data-label={batchLabel}>{attributes.batchName || '-'}</td>
+                          <td data-label={pointsLabel}>+{attributes.pointsAmount}</td>
+                          <td data-label={suffixLabel}>****{attributes.codeSuffix}</td>
+                          <td data-label={redeemedAtLabel}>
+                            {attributes.redeemedAt ? new Date(attributes.redeemedAt).toLocaleString() : '-'}
+                          </td>
                         </tr>
                       );
                     })}

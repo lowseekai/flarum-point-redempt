@@ -95,7 +95,33 @@
   }
 
   .PointRedemptionPage-table {
-    min-width: 640px;
+    width: 100%;
+    table-layout: fixed;
+
+    th,
+    td {
+      overflow-wrap: anywhere;
+    }
+
+    th:nth-child(1),
+    td:nth-child(1) {
+      width: 34%;
+    }
+
+    th:nth-child(2),
+    td:nth-child(2) {
+      width: 14%;
+    }
+
+    th:nth-child(3),
+    td:nth-child(3) {
+      width: 20%;
+    }
+
+    th:nth-child(4),
+    td:nth-child(4) {
+      width: 32%;
+    }
   }
 }
 
@@ -114,6 +140,49 @@
 
     .PointRedemptionPage-section {
       padding: 16px;
+    }
+
+    .PointRedemptionPage-tableWrap {
+      overflow: visible;
+    }
+
+    .PointRedemptionPage-table {
+      display: block;
+      table-layout: auto;
+
+      thead {
+        display: none;
+      }
+
+      tbody,
+      tr,
+      td {
+        display: block;
+      }
+
+      tr {
+        padding: 12px 0;
+        border-bottom: 1px solid var(--control-bg);
+      }
+
+      tr:first-child {
+        border-top: 1px solid var(--control-bg);
+      }
+
+      td {
+        display: grid;
+        grid-template-columns: minmax(84px, 34%) minmax(0, 1fr);
+        gap: 12px;
+        width: auto !important;
+        padding: 5px 0;
+        border: 0;
+        text-align: left;
+      }
+
+      td::before {
+        color: var(--muted-color);
+        content: attr(data-label);
+      }
     }
   }
 }
