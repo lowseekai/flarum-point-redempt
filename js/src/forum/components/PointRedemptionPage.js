@@ -1,5 +1,7 @@
 import app from 'flarum/forum/app';
 import Page from 'flarum/common/components/Page';
+import PageStructure from 'flarum/forum/components/PageStructure';
+import IndexSidebar from 'flarum/forum/components/IndexSidebar';
 import Button from 'flarum/common/components/Button';
 import LinkButton from 'flarum/common/components/LinkButton';
 import LoadingIndicator from 'flarum/common/components/LoadingIndicator';
@@ -7,6 +9,7 @@ import LoadingIndicator from 'flarum/common/components/LoadingIndicator';
 export default class PointRedemptionPage extends Page {
   oninit(vnode) {
     super.oninit(vnode);
+    this.bodyClass = 'App--index';
     this.code = '';
     this.balance = 0;
     this.redemptions = [];
@@ -104,8 +107,8 @@ export default class PointRedemptionPage extends Page {
     const getCodeUrl = app.forum.attribute('pointRedemptionGetCodeUrl');
 
     return (
-      <main className="PointRedemptionPage">
-        <div className="container">
+      <PageStructure className="PointRedemptionLayout" sidebar={this.sidebar.bind(this)}>
+        <main className="PointRedemptionPage">
           <div className="PointRedemptionPage-header">
             <div>
               <h1>{displayName}</h1>
@@ -205,8 +208,12 @@ export default class PointRedemptionPage extends Page {
               <p className="helpText">{app.translator.trans('lowseekai-point-redempt.forum.history_empty')}</p>
             )}
           </section>
-        </div>
-      </main>
+        </main>
+      </PageStructure>
     );
+  }
+
+  sidebar() {
+    return <IndexSidebar />;
   }
 }
