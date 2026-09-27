@@ -102,7 +102,6 @@ export default class PointRedemptionPage extends Page {
   }
 
   view() {
-    const pointsIcon = app.forum.attribute('pointRedemptionIcon') || 'fas fa-coins';
     const getCodeUrl = app.forum.attribute('pointRedemptionGetCodeUrl');
 
     return (
@@ -112,15 +111,6 @@ export default class PointRedemptionPage extends Page {
         sidebar={this.sidebar.bind(this)}
       >
         <div className="PointRedemptionPage">
-          <div className="PointRedemptionPage-header">
-            <div className="PointRedemptionPage-balance">
-              <span>{app.translator.trans('lowseekai-point-redempt.forum.current_balance')}</span>
-              <strong>
-                <i className={`icon ${pointsIcon}`} aria-hidden="true" /> {this.balance}
-              </strong>
-            </div>
-          </div>
-
           <section className="PointRedemptionPage-section">
             <h2>{app.translator.trans('lowseekai-point-redempt.forum.redeem_heading')}</h2>
             <form className="Form PointRedemptionPage-form" onsubmit={this.redeem.bind(this)}>

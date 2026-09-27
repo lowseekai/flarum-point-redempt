@@ -1,17 +1,8 @@
 .PointRedemptionPage {
   padding: 18px 0 48px;
 
-  .PointRedemptionPage-header,
   .PointRedemptionPage-section {
     background: var(--body-bg);
-  }
-
-  .PointRedemptionPage-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 24px;
-    margin-bottom: 18px;
   }
 
   h1,
@@ -21,41 +12,6 @@
 
   h1 {
     margin-bottom: 6px;
-  }
-
-  .PointRedemptionPage-header .helpText {
-    margin-bottom: 0;
-  }
-
-  .PointRedemptionPage-balance {
-    flex: 0 0 auto;
-    min-width: 0;
-    padding: 10px 11px;
-    border: 1px solid var(--control-bg);
-    border-radius: 6px;
-    text-align: right;
-    background: var(--body-bg);
-
-    span,
-    strong {
-      display: block;
-    }
-
-    span {
-      color: var(--muted-color);
-      font-size: 13px;
-    }
-
-    strong {
-      margin-top: 4px;
-      color: var(--primary-color);
-      font-size: 24px;
-
-      .icon {
-        margin-right: 4px;
-        font-size: 0.8em;
-      }
-    }
   }
 
   .PointRedemptionPage-form .Form-controls {
@@ -101,7 +57,7 @@
     th,
     td {
       overflow-wrap: anywhere;
-      text-align: left;
+      text-align: left !important;
     }
 
     th:nth-child(1),
@@ -129,15 +85,6 @@
 @media (max-width: 600px) {
   .PointRedemptionPage {
     padding-top: 16px;
-
-    .PointRedemptionPage-header {
-      display: block;
-    }
-
-    .PointRedemptionPage-balance {
-      margin-top: 16px;
-      text-align: left;
-    }
 
     .PointRedemptionPage-section {
       padding: 16px;
