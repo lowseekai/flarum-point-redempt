@@ -102,18 +102,17 @@ export default class PointRedemptionPage extends Page {
   }
 
   view() {
-    const displayName = app.forum.attribute('pointRedemptionName') || app.translator.trans('lowseekai-point-redempt.forum.title');
     const pointsIcon = app.forum.attribute('pointRedemptionIcon') || 'fas fa-coins';
     const getCodeUrl = app.forum.attribute('pointRedemptionGetCodeUrl');
 
     return (
-      <PageStructure className="PointRedemptionLayout IndexPage" sidebar={this.sidebar.bind(this)}>
-        <main className="PointRedemptionPage">
+      <PageStructure
+        className="IndexPage PointRedemptionLayout"
+        hero={this.hero.bind(this)}
+        sidebar={this.sidebar.bind(this)}
+      >
+        <div className="PointRedemptionPage">
           <div className="PointRedemptionPage-header">
-            <div>
-              <h1>{displayName}</h1>
-              <p className="helpText">{app.translator.trans('lowseekai-point-redempt.forum.subtitle')}</p>
-            </div>
             <div className="PointRedemptionPage-balance">
               <span>{app.translator.trans('lowseekai-point-redempt.forum.current_balance')}</span>
               <strong>
@@ -215,8 +214,25 @@ export default class PointRedemptionPage extends Page {
               <p className="helpText">{app.translator.trans('lowseekai-point-redempt.forum.history_empty')}</p>
             )}
           </section>
-        </main>
+        </div>
       </PageStructure>
+    );
+  }
+
+  hero() {
+    const displayName = app.forum.attribute('pointRedemptionName') || app.translator.trans('lowseekai-point-redempt.forum.title');
+
+    return (
+      <header className="Hero PointRedemptionHero">
+        <div className="container">
+          <div className="containerNarrow">
+            <h1 className="Hero-title">
+              <i className="icon fas fa-gift" aria-hidden="true" /> {displayName}
+            </h1>
+            <p className="helpText">{app.translator.trans('lowseekai-point-redempt.forum.subtitle')}</p>
+          </div>
+        </div>
+      </header>
     );
   }
 
